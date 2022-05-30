@@ -11,6 +11,21 @@ h1 {
 	font-weight: 400;
 }
 
+h2 {
+	font-size: 1.5rem;
+	font-weight: 400;
+}
+
+h3 {
+	font-size: 1rem;
+	font-weight: 400;
+}
+
+input[type="checkbox"] {
+	width: 16px;
+	height: 16px;
+}
+
 .wlimit {
 	width: 100%;
 	max-width: 1440px;
@@ -19,13 +34,26 @@ h1 {
 }
 
 #task-list {
+	border: 2px solid hsl(0 0% 72%);
+	border-radius: 8px;
+	max-width: 450px;
 	padding-left: 0;
+	overflow: hidden;
 }
 
 .task {
-	padding: 8px 12px;
 	display: flex;
 	gap: 12px;
+	padding: 12px;
+	align-items: center;
+}
+
+.task:nth-child(odd) {
+	background-color: #eee;
+}
+
+.task h3 {
+	margin: 0;
 }
 
 .task .vert {
@@ -34,10 +62,23 @@ h1 {
 }
 
 .task .desc {
-	font-size: 1.5rem;
+	font-size: 1rem;
 }
 
-.task .id {
-	font-family: monospace;
-	font-size: 0.75rem;
+.task code {
+	font-size: 12px;
+}
+
+.spacer {
+	flex: 1 0 auto;
+}
+
+.task .btn-delete {
+	width: 24px;
+	height: 24px;
+	background-image: url('/img/trash.svg');
+	background-size: cover;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
 }

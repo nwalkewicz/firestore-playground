@@ -47,7 +47,6 @@ router.patch('/api/tasks/:id', async (req, res) => {
 
 	try {
 		const task = await Task.findById(req.params.id);
-		console.log(task);
 		if (!task) return res.status(404).send();
 		
 		requestedUpdates.forEach(update => task[update] = req.body[update]);
