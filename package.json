@@ -1,0 +1,20 @@
+{
+  "name": "firestore-playground",
+  "version": "1.0.0",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon ."
+  },
+  "repository": "https://github.com/nwalkewicz/firestore-playground.git",
+  "author": "Nicholas Walkewicz <nwalkewicz@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  },
+  "dependencies": {
+    "@firebase/firestore": "^3.4.9",
+    "express": "^4.18.1",
+    "firebase-admin": "^10.2.0"
+  }
+}
