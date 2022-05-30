@@ -12,7 +12,16 @@
 <body>
 	<section class="wlimit">
 		<h1>Firestore Playground</h1>
-		<ul id="tasks"></ul>
+		<form id="task-form">
+			<label for="description">Description</label>
+			<input type="text" name="description" id="task-form-description">
+			<br>
+			<label for="completed">Completed</label>
+			<input type="checkbox" name="completed" id="task-form-completed">
+			<br>
+			<button type="submit">Create Task</button>
+		</form>
+		<ul id="task-list"></ul>
 	</section>
 </body>
 </html>

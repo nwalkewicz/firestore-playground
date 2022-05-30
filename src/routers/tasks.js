@@ -6,7 +6,6 @@ const router = new express.Router();
 router.use(express.json());
 
 router.post('/api/tasks', (req, res) => {
-	// Create task
 	try {
 		const task = new Task({
 			description: req.body.description,
