@@ -43,6 +43,8 @@ $taskForm.addEventListener('submit', async e => {
 		description: $taskFormDescription.value,
 		completed: $taskFormCompleted.checked
 	};
+
+	if (!formData.description) return;
 	
 	await fetch('/api/tasks', {
 		method: 'POST',
