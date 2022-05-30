@@ -48,7 +48,7 @@ input[type="checkbox"] {
 	align-items: center;
 }
 
-.task:nth-child(odd) {
+.task:nth-child(even) {
 	background-color: #eee;
 }
 
