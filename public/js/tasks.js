@@ -31,7 +31,7 @@ $taskForm.addEventListener('submit', e => {
 
 	const formData = {
 		description: $taskFormDescription.value,
-		completed: $taskFormCompleted.value === 'on' ? true : false
+		completed: $taskFormCompleted.checked
 	};
 	console.log(formData);
 	fetch('/api/tasks', {
