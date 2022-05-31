@@ -14,7 +14,6 @@ async function getTasks() {
 }
 
 function renderTask(task) {
-	console.log(task);
 	return `
 	<li class="task" data-taskId="${task.id}">
 		<input type="checkbox" ${task.completed ? 'checked' : ''}>
