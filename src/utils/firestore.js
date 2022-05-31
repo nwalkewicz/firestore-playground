@@ -5,7 +5,7 @@ const {getFirestore} = require('firebase-admin/firestore');
 
 let serviceAccount;
 try {
-	serviceAccount = process.env.FIRESTORE_KEY || require(path.join(__dirname, '../../private/firestore-key.json'));
+	serviceAccount = Buffer.from(process.env.FIRESTORE_KEY, 'base64').toJSON() || require(path.join(__dirname, '../../private/firestore-key.json'));
 } catch(err) {
 	console.error(`Couldn't load Firestore key. Found error: `, err);
 }
