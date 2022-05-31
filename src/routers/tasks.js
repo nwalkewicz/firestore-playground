@@ -5,12 +5,19 @@ const {db} = require('../utils/firestore');
 const router = new express.Router();
 router.use(express.json());
 
-router.post('/api/tasks', (req, res) => {
+router.post('/api/tasks', async (req, res) => {
 	try {
 		const task = new Task({
 			description: req.body.description,
 			completed: req.body.completed
 		});
+
+		// Check for existing task description
+		if ((await Task.findAll()).find(et => et.description === task.description))
+			return res.status(400).send({
+				error: 'Task already exists'
+			});
+		
 		task.save();
 		res.send(task);
 	} catch(err) {

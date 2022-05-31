@@ -2,6 +2,12 @@ const $taskList = document.getElementById('task-list');
 const $taskForm = document.getElementById('task-form');
 const $taskFormDescription = document.getElementById('task-form-description');
 const $taskFormCompleted = document.getElementById('task-form-completed');
+const $taskError = document.getElementById('task-error');
+
+function clearInput() {
+	$taskFormDescription.value = '';
+	$taskFormDescription.focus();
+}
 
 async function getTasks() {
 	return await (await fetch('/api/tasks')).json();
@@ -20,6 +26,11 @@ function renderTask(task) {
 		<button class="btn-delete" title="Delete Task"></button>
 	</li>
 	`;
+}
+
+function renderError(msg) {
+	$taskError.textContent = `Error: ${msg}`;
+	setTimeout(() => $taskError.textContent = '', 3000);
 }
 
 async function renderTasks(tasks) {
@@ -44,15 +55,22 @@ $taskForm.addEventListener('submit', async e => {
 		completed: $taskFormCompleted.checked
 	};
 
+	clearInput();
 	if (!formData.description) return;
 	
-	await fetch('/api/tasks', {
+	const response = await fetch('/api/tasks', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify(formData)
 	});
+
+	if (!response.ok) {
+		const res = await response.json();
+		// return console.warn(res?.error || 'Error');
+		return renderError(res?.error || `Couldn't add task.`);
+	}
 
 	const tasks = await getTasks();
 	await renderTasks(tasks);
@@ -82,3 +100,5 @@ $taskList.addEventListener('click', async e => {
 		await renderTasks(tasks);
 	}
 });
+
+clearInput();

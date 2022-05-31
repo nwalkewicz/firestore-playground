@@ -82,3 +82,8 @@ input[type="checkbox"] {
 	background-color: transparent;
 	cursor: pointer;
 }
+
+#task-error {
+	color: red;
+	margin-block: 12px;
+}
